@@ -1,0 +1,124 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+  background-color: #e4e2e2;
+}
+
+h3 {
+  font-size: 30px;
+  font-weight: bold;
+  background-color: #1366ad;
+  text-align: left;
+  border: gray;
+  border-style: groove;
+}
+
+.display {
+  background-color: #e4e2e2;
+  font-size: 40px;
+  left: -50px;
+
+  padding-bottom: 35px;
+}
+.buttons {
+  margin-top: -105px;
+}
+
+.start {
+  margin: 30px auto;
+  color: #dad6d6;
+  background: #48633b;
+  border: solid 2px #35492c;
+  border-radius: 5px;
+  padding: 7px 30px;
+
+  cursor: pointer;
+}
+
+.pause {
+  margin: 30px 5px auto;
+
+  color: #dad6d6;
+  background: #721329;
+  border: solid 2px #590f20;
+  border-radius: 5px;
+  padding: 7px 30px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.reset {
+  margin: 30px auto;
+
+  color: #dad6d6;
+  background: #564e58;
+  border: solid 2px #3e383f;
+  border-radius: 5px;
+  padding: 7px 30px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+.submit {
+  margin-left: 620px;
+  margin-top: 10px;
+  color: #dad6d6;
+  background: #564e58;
+  border: solid 2px #3e383f;
+  border-radius: 5px;
+  padding: 7px 30px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.dropdown {
+  color: #dad6d6;
+  background: #064179;
+  border: solid 2px #05345f;
+  border-radius: 5px;
+  padding: 1px 40px 1px;
+  letter-spacing: 2px;
+  margin: -25px 5px auto;
+}
+.comments {
+  margin-left: 280px;
+  background-color: #e4e2e2;
+  margin-right: 280px;
+  padding-bottom: 50px;
+}
+textarea {
+  border: solid 2px #3e383f;
+  border-radius: 5px;
+}
+.projects {
+  width: 185%;
+  padding: 5px;
+
+  font-size: 18px;
+}
+.tasks {
+  width: 185%;
+  padding: 5px;
+
+  font-size: 18px;
+}
+p {
+  margin-top: -30px;
+  text-align: left;
+  background-color: #dad6d6;
+  margin-right: 280px;
+  margin-left: 280px;
+}
+.protasks {
+  background-color: #e4e2e2;
+  margin-top: -28px;
+  padding-right: 277px;
+  padding-left: 277px;
+}
+.align {
+  text-align: left;
+  margin-left: -350px;
+  padding: 2px;
+  padding-bottom: 6px;
+}
