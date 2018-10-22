@@ -97,9 +97,9 @@ const Navigation = styled.nav`
       font-weight: bold;
       border-right: 2px solid #ebede1;
 
-      &:hover {
+      /* &:hover {
         border-bottom: 2px solid #ebede1;
-      }
+      } */
     }
   }
 `
