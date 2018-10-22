@@ -37,6 +37,10 @@ a {
   justify-content: space-evenly;
   align-items: center;
 }
+.time-icon {
+  border: 0.25px solid #0b2f37;
+  margin: 0 auto;
+}
 .arrow::before {
   content: '\27F0';
 }

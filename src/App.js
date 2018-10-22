@@ -42,7 +42,7 @@ class App extends Component {
             <Subtitle>Time Tracker</Subtitle>
             <Arrow href='#' />
           </div>
-          <img src='./img/time.svg' alt='Time Tracker Icon' />
+          <img className='time-icon' src='./img/time.svg' alt='Time Tracker Icon' />
           <Placeholder children={'Lucios Time Tracker'} />
         </Section>
 
