@@ -1,3 +1,5 @@
+/* GLOBAL STYLINGS */
+
 body {
   margin: 0;
   padding: 0;
@@ -21,26 +23,10 @@ a {
   text-decoration:none;
 }
 
-.hero {
-  color:inherit;
-  height:50%;
-  background-color:#ebede1;
-}
-
+/*** 
+* Only here because of issues w/ 
+* styled-components and '\'-character */
 .rocket-para::after {
   content: '\1F680';
   margin-left: 10px;
-}
-
-.subtitle-wrapper {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.time-icon {
-  border: 0.25px solid #0b2f37;
-  margin: 0 auto;
-}
-.arrow::before {
-  content: '\27F0';
 }
