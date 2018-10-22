@@ -16,7 +16,7 @@ class App extends Component {
 
         </Navigation>
 
-        <Section className='hero' id='home'>
+        <Section id='home'>
 
           <Title>Welcome Freelancer!</Title>
 
@@ -30,27 +30,31 @@ class App extends Component {
 
         <Section id='about'>
 
-          <div className='subtitle-wrapper'>
+          <SubtitleWrapper>
             <Subtitle>About this great tool</Subtitle>
             <Arrow href='#' />
-          </div>
+          </SubtitleWrapper>
+
         </Section>
 
 
         <Section id='time-tracker'>
-          <div className='subtitle-wrapper'>
+
+          <SubtitleWrapper>
             <Subtitle>Time Tracker</Subtitle>
             <Arrow href='#' />
-          </div>
-          <img className='time-icon' src='./img/time.svg' alt='Time Tracker Icon' />
+          </SubtitleWrapper>
+
+          <img className='time-icon' src='img/time.svg' alt='Time Tracker Icon' />
           <Placeholder children={'Lucios Time Tracker'} />
+
         </Section>
 
         <Footer>
-          <div className='subtitle-wrapper'>
+          <SubtitleWrapper>
             <Subtitle>Check us out on github</Subtitle>
             <Arrow href='#' />
-          </div>
+          </SubtitleWrapper>
         </Footer>
       </div>
     );
@@ -58,6 +62,13 @@ class App extends Component {
 }
 
 export default App;
+
+const SubtitleWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`
+
 
 const Placeholder = styled.div`
   margin: 50px auto 0 auto;
@@ -116,6 +127,11 @@ const Section = styled.section`
   border-bottom:5px solid #0b2f37;
   padding: 50px;
   background-color:#ebede1;
+  
+  &.time-icon {
+  border: 0.25px solid #0b2f37;
+  margin: 0 auto;
+}
 `
 const Subtitle = styled.h2`
 `
