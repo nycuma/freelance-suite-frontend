@@ -128,7 +128,7 @@ const Section = styled.section`
   padding: 50px;
   background-color:#ebede1;
   
-  &.time-icon {
+  .time-icon {
   border: 0.25px solid #0b2f37;
   margin: 0 auto;
 }
