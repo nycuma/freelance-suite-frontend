@@ -59,36 +59,46 @@ class TimeTracker extends React.Component {
   render() {
     return (
       <div className="container">
-        <header>
+        <div className="header">
           <h3>Time Tracker</h3>
-          <p className="display" ref={this.myRef}>
-            {this.state.hour}:{this.state.min}:{this.state.sec}
-          </p>
+        </div>
+        <div className="main">
+          {this.state.hour}:{this.state.min}:{this.state.sec}
           <div className="buttons">
-            <button className="start" onClick={() => this.start()}>
+            <button
+              className="waves-effect waves-light btn-small"
+              onClick={() => this.start()}
+            >
               Start
             </button>
-            <button className="pause" onClick={() => this.stop()}>
+            <button
+              className="waves-effect waves-light btn-small"
+              onClick={() => this.stop()}
+            >
               ||
             </button>
-            <button className="reset" onClick={() => this.clear()}>
+            <button
+              className="waves-effect waves-light btn-small"
+              onClick={() => this.clear()}
+            >
               Reset
             </button>
           </div>
-        </header>
-        <div className="protasks">
+        </div>
+
+        <div className="main2">
           <div className="align">
-            Projects:
-            <select className="projects" name="Project">
-              <option>Project 1</option>
-              <option>Project 2</option>
-              <option>Project 3</option>
-              <option>Project 4</option>
+            <div>Projects:</div>
+            <select className="browser-default dropdown" name="Task">
+              <option>Task 1</option>
+              <option>Task 2</option>
+              <option>Task 3</option>
+              <option>Task 4</option>
             </select>
           </div>
-          <div className="align">
-            Tasks:
-            <select className="tasks" name="Task">
+          <div className="align2">
+            <div>Tasks:</div>
+            <select className="browser-default dropdown" name="Task">
               <option>Task 1</option>
               <option>Task 2</option>
               <option>Task 3</option>
@@ -97,13 +107,15 @@ class TimeTracker extends React.Component {
           </div>
         </div>
 
-        <div className="comments">
-          <textarea rows="7" cols="100" name="comment" form="usrform">
-            Add Comments...
-          </textarea>
-          <div>
-            <button className="submit">Submit</button>
+        <div className="footer">
+          <div className="input-field">
+            <input id="input_text" type="text" />
+            <label for="input_text">Comments</label>
           </div>
+
+          <button className="waves-effect waves-light btn-small prefix">
+            Submit
+          </button>
         </div>
       </div>
     );

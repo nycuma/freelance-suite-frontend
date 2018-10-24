@@ -1,34 +1,23 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
-import TimeTracker from "./components/TimeTracker.jsx";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Footer from "./components/Footer";
 
 class App extends Component {
   state = {
-    users: [],
-    invisible: "invisible"
+    users: []
   };
   async componentDidMount() {
     const result = await axios.get("http://localhost:8000/api/user");
     this.setState({ users: result.data });
   }
 
-  appear = () => {
-    this.setState({ invisible: "" });
-  };
-
   render() {
     return (
       <div className="App">
-        <button onClick={() => this.appear()}>TimeTracker</button>
-        <div className={this.state.invisible}>
-          <TimeTracker />>
-        </div>
-        <ul>
-          {this.state.users.map(user => (
-            <li key={user._id}>{user.name}</li>
-          ))}
-        </ul>
+        <Navbar />
       </div>
     );
   }
