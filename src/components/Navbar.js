@@ -1,7 +1,8 @@
 import React from "react";
 import TimeTracker from "./TimeTracker";
+import { Navbar, NavItem, Icon, Modal, Button } from "react-materialize";
 
-class Navbar extends React.Component {
+class Navigation extends React.Component {
   state = {
     modal: "modal"
   };
@@ -15,48 +16,20 @@ class Navbar extends React.Component {
   render() {
     return (
       <div>
-        <nav>
-          <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">
-              <img src={require("./img/rocket-launch.svg")} />
-            </a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-              <i class="material-icons">menu</i>
-            </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li>
-                <a
-                  class="waves-effect waves-light btn modal-trigger"
-                  href="#modal1"
-                  onClick={() => this.appear()}
-                >
-                  Time Tracker
-                </a>
-              </li>
-
-              <li>
-                <a href="">About</a>
-              </li>
-              <li>
-                <a href="">Sign Up</a>
-              </li>
-              <li>
-                <a href="">Sign In</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <ul class="sidenav" id="mobile-demo">
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a href="#">Sign Up</a>
-          </li>
-          <li>
-            <a href="#">Sign In</a>
-          </li>
-        </ul>
+        <Navbar brand={<img src={require("./img/rocket-launch.svg")} />} right>
+          <NavItem right onClick={() => this.appear()}>
+            Time Tracker
+          </NavItem>
+          <NavItem right href="">
+            About
+          </NavItem>
+          <NavItem right href="">
+            Sign Up
+          </NavItem>
+          <NavItem right href="">
+            Sign In
+          </NavItem>
+        </Navbar>
 
         <div id="modal1" class={this.state.modal}>
           <div class="modal-content">
@@ -65,7 +38,7 @@ class Navbar extends React.Component {
               class="modal-close waves-effect waves-green btn-flat right"
               onClick={() => this.disappear()}
             >
-              X
+              <Icon>close</Icon>
             </a>
             <TimeTracker />
           </div>
@@ -75,4 +48,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar;
+export default Navigation;

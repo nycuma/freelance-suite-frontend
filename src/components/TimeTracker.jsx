@@ -63,7 +63,9 @@ class TimeTracker extends React.Component {
           <h3>Time Tracker</h3>
         </div>
         <div className="main">
-          {this.state.hour}:{this.state.min}:{this.state.sec}
+          <div className="time">
+            {this.state.hour}:{this.state.min}:{this.state.sec}
+          </div>
           <div className="buttons">
             <button
               className="waves-effect waves-light btn-small"
@@ -72,7 +74,7 @@ class TimeTracker extends React.Component {
               Start
             </button>
             <button
-              className="waves-effect waves-light btn-small"
+              className="waves-effect waves-light btn-small pause"
               onClick={() => this.stop()}
             >
               ||
@@ -113,7 +115,7 @@ class TimeTracker extends React.Component {
             <label for="input_text">Comments</label>
           </div>
 
-          <button className="waves-effect waves-light btn-small prefix">
+          <button className="waves-effect waves-light btn-small prefix submit">
             Submit
           </button>
         </div>
