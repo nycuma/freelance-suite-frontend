@@ -1,5 +1,6 @@
 import React from "react";
 import "./TimeTracker.css";
+import { getUsers } from "../actions/actions";
 
 class TimeTracker extends React.Component {
   constructor(props) {
@@ -9,14 +10,20 @@ class TimeTracker extends React.Component {
       sec: "00",
       min: "00",
       hour: "00",
-      fire: ""
+      fire: "",
+      users: []
     };
   }
+
+  async componentDidMount() {
+    const users = await getUsers();
+    this.setState({ users: users.data });
+  }
+
   add = () => {
     let seconds = parseInt(this.state.sec);
     let minutes = parseInt(this.state.min);
     let hours = parseInt(this.state.hour);
-
     seconds++;
     if (seconds >= 60) {
       seconds = 0;
@@ -57,6 +64,7 @@ class TimeTracker extends React.Component {
   };
 
   render() {
+    console.log(this.state.users);
     return (
       <div className="container">
         <div className="header">
@@ -92,10 +100,9 @@ class TimeTracker extends React.Component {
           <div className="align">
             <div>Projects:</div>
             <select className="browser-default dropdown" name="Task">
-              <option>Task 1</option>
-              <option>Task 2</option>
-              <option>Task 3</option>
-              <option>Task 4</option>
+              {this.state.users.map(user => (
+                <option key={user.id}>{user.name}</option>
+              ))}
             </select>
           </div>
           <div className="align2">
