@@ -1,6 +1,6 @@
 import React from "react";
 import "./TimeTracker.css";
-import { getUsers } from "../actions/actions";
+import { getUsers } from "../helpers/users";
 
 class TimeTracker extends React.Component {
   constructor(props) {
@@ -15,9 +15,10 @@ class TimeTracker extends React.Component {
     };
   }
 
-  async componentDidMount() {
-    const users = await getUsers();
-    this.setState({ users: users.data });
+    componentDidMount() {
+    const fetchedUsers = await getUsers();
+    console.log(fetchedUsers);
+    this.setState({ users: fetchedUsers.data });
   }
 
   add = () => {
