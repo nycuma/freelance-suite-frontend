@@ -4,13 +4,16 @@ import "./Dashboard.css";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import TimeTracker from "./TimeTracker";
-import { Button } from "react-materialize";
+import { Button, NavItem, Dropdown, Icon } from "react-materialize";
+import Charts from "./Charts";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 class Dashboard extends React.Component {
   state = {
-    display: "invisible"
+    display: "invisible",
+    chartdisplay: "invisible",
+    closebutton: "invisible"
   };
 
   appear = () => {
@@ -18,6 +21,14 @@ class Dashboard extends React.Component {
   };
   disappear() {
     this.setState({ display: "invisible" });
+  }
+  appearChart = () => {
+    this.setState({ chartdisplay: "" });
+    this.setState({ closebutton: "alignclose" });
+  };
+  disappearChart() {
+    this.setState({ chartdisplay: "invisible" });
+    this.setState({ closebutton: "invisible" });
   }
 
   render() {
@@ -38,17 +49,27 @@ class Dashboard extends React.Component {
     };
 
     var display = this.state.display;
+    var chartdisplay = this.state.chartdisplay;
 
     return (
       <div>
-        <Button
-          floating
-          large
-          className="red right"
-          waves="light"
-          icon="add"
-          onClick={() => this.appear()}
-        />
+        <Dropdown
+          trigger={
+            <Button
+              floating
+              large
+              className="red right"
+              waves="light"
+              icon="add"
+            />
+          }
+        >
+          <NavItem onClick={() => this.appear()}>Tracker</NavItem>
+
+          <NavItem onClick={() => this.appearChart()}>Charts</NavItem>
+
+          <NavItem>three</NavItem>
+        </Dropdown>
 
         <ResponsiveGridLayout
           className="layout"
@@ -58,12 +79,26 @@ class Dashboard extends React.Component {
           rowHeight={425}
           autoSize={true}
         >
-          <div className="" key="1">
+          <div key="1">
             <TimeTracker
               displayState={display}
               buttonClick={this.disappear.bind(this)}
             />
           </div>
+
+          <div key="2">
+            <a
+              href="#!"
+              className={this.state.closebutton}
+              onClick={() => this.disappearChart()}
+            >
+              <Icon>close</Icon>
+            </a>
+
+            <Charts displayChart={chartdisplay} />
+          </div>
+
+          <div key="3" />
         </ResponsiveGridLayout>
       </div>
     );
