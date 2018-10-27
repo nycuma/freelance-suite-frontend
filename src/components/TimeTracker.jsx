@@ -1,6 +1,9 @@
 import React from "react";
 import "./TimeTracker.css";
 import { getUsers } from "../helpers/users";
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
+import { Icon } from "react-materialize";
 
 class TimeTracker extends React.Component {
   constructor(props) {
@@ -11,15 +14,19 @@ class TimeTracker extends React.Component {
       min: "00",
       hour: "00",
       fire: "",
-      users: []
+      users: [],
+      display: this.props.displayState
     };
   }
 
-    componentDidMount() {
+  async componentDidMount() {
     const fetchedUsers = await getUsers();
-    console.log(fetchedUsers);
     this.setState({ users: fetchedUsers.data });
   }
+
+  disappear = () => {
+    this.setState({ display: "invisible" });
+  };
 
   add = () => {
     let seconds = parseInt(this.state.sec);
@@ -67,65 +74,72 @@ class TimeTracker extends React.Component {
   render() {
     console.log(this.state.users);
     return (
-      <div className="container">
-        <div className="header">
-          <h3>Time Tracker</h3>
-        </div>
-        <div className="main">
-          <div className="time">
-            {this.state.hour}:{this.state.min}:{this.state.sec}
-          </div>
-          <div className="buttons">
-            <button
-              className="waves-effect waves-light btn-small"
-              onClick={() => this.start()}
+      <div className={this.props.displayState}>
+        <div className="container">
+          <div className="header">
+            <h3>Time Tracker</h3>
+            <a
+              href="#!"
+              className="modal-close right"
+              onClick={this.props.buttonClick}
             >
-              Start
-            </button>
-            <button
-              className="waves-effect waves-light btn-small pause"
-              onClick={() => this.stop()}
-            >
-              ||
-            </button>
-            <button
-              className="waves-effect waves-light btn-small"
-              onClick={() => this.clear()}
-            >
-              Reset
-            </button>
+              <Icon>close</Icon>
+            </a>
           </div>
-        </div>
-
-        <div className="main2">
-          <div className="align">
-            <div>Projects:</div>
-            <select className="browser-default dropdown" name="Task">
-              {this.state.users.map(user => (
-                <option key={user.id}>{user.name}</option>
-              ))}
-            </select>
-          </div>
-          <div className="align2">
-            <div>Tasks:</div>
-            <select className="browser-default dropdown" name="Task">
-              <option>Task 1</option>
-              <option>Task 2</option>
-              <option>Task 3</option>
-              <option>Task 4</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="footer">
-          <div className="input-field">
-            <input id="input_text" type="text" />
-            <label for="input_text">Comments</label>
+          <div className="main">
+            <div className="time">
+              {this.state.hour}:{this.state.min}:{this.state.sec}
+            </div>
+            <div className="buttons">
+              <button
+                className="waves-effect waves-light btn-small"
+                onClick={() => this.start()}
+              >
+                Start
+              </button>
+              <button
+                className="waves-effect waves-light btn-small pause"
+                onClick={() => this.stop()}
+              >
+                ||
+              </button>
+              <button
+                className="waves-effect waves-light btn-small"
+                onClick={() => this.clear()}
+              >
+                Reset
+              </button>
+            </div>
           </div>
 
-          <button className="waves-effect waves-light btn-small prefix submit">
-            Submit
-          </button>
+          <div className="main2">
+            <div className="align">
+              <select className="browser-default dropdown" name="Task">
+                {this.state.users.map(user => (
+                  <option key={user.id}>{user.name}</option>
+                ))}
+              </select>
+            </div>
+            <div className="align2">
+              <select className="browser-default dropdown" name="Task">
+                <option>Task 1</option>
+                <option>Task 2</option>
+                <option>Task 3</option>
+                <option>Task 4</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="footer">
+            <div className="input-field">
+              <input id="input_text" type="text" />
+              <label for="input_text">Comments</label>
+            </div>
+
+            <button className="waves-effect waves-light btn-small prefix submit">
+              Submit
+            </button>
+          </div>
         </div>
       </div>
     );
