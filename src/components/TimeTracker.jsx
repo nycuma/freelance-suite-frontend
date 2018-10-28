@@ -3,7 +3,7 @@ import "./TimeTracker.css";
 import { getUsers } from "../helpers/users";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
-import { Icon } from "react-materialize";
+import { Icon, Modal, Button, Navbar } from "react-materialize";
 
 class TimeTracker extends React.Component {
   constructor(props) {
@@ -76,15 +76,15 @@ class TimeTracker extends React.Component {
     return (
       <div className={this.props.displayState}>
         <div className="container">
+          <div className="closediv">
+            <button className="closebutton" onClick={this.props.buttonClick}>
+              X
+            </button>
+          </div>
           <div className="header">
-            <h3>Time Tracker</h3>
-            <a
-              href="#!"
-              className="modal-close right"
-              onClick={this.props.buttonClick}
-            >
-              <Icon>close</Icon>
-            </a>
+            <div>
+              <h3>Time Tracker</h3>
+            </div>
           </div>
           <div className="main">
             <div className="time">

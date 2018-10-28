@@ -6,6 +6,7 @@ import "react-resizable/css/styles.css";
 import TimeTracker from "./TimeTracker";
 import { Button, NavItem, Dropdown, Icon } from "react-materialize";
 import Charts from "./Charts";
+import Clients from "./Clients";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -13,7 +14,8 @@ class Dashboard extends React.Component {
   state = {
     display: "invisible",
     chartdisplay: "invisible",
-    closebutton: "invisible"
+    closebutton: "invisible",
+    clientsdisplay: "invisible"
   };
 
   appear = () => {
@@ -24,11 +26,17 @@ class Dashboard extends React.Component {
   }
   appearChart = () => {
     this.setState({ chartdisplay: "" });
-    this.setState({ closebutton: "alignclose" });
+    this.setState({ closebutton: "closebutton" });
   };
   disappearChart() {
     this.setState({ chartdisplay: "invisible" });
     this.setState({ closebutton: "invisible" });
+  }
+  appearClients() {
+    this.setState({ clientsdisplay: "" });
+  }
+  disappearClients() {
+    this.setState({ clientsdisplay: "invisible" });
   }
 
   render() {
@@ -50,6 +58,7 @@ class Dashboard extends React.Component {
 
     var display = this.state.display;
     var chartdisplay = this.state.chartdisplay;
+    var clientsdisplay = this.state.clientsdisplay;
 
     return (
       <div>
@@ -58,7 +67,7 @@ class Dashboard extends React.Component {
             <Button
               floating
               large
-              className="red right"
+              className="green right"
               waves="light"
               icon="add"
             />
@@ -68,15 +77,15 @@ class Dashboard extends React.Component {
 
           <NavItem onClick={() => this.appearChart()}>Charts</NavItem>
 
-          <NavItem>three</NavItem>
+          <NavItem onClick={() => this.appearClients()}>Clients</NavItem>
         </Dropdown>
 
         <ResponsiveGridLayout
           className="layout"
           layouts={layouts}
           breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-          cols={{ lg: 5, md: 6, sm: 6, xs: 4, xxs: 2 }}
-          rowHeight={425}
+          cols={{ lg: 5.2, md: 6, sm: 6, xs: 4, xxs: 2 }}
+          rowHeight={345}
           autoSize={true}
         >
           <div key="1">
@@ -87,18 +96,24 @@ class Dashboard extends React.Component {
           </div>
 
           <div key="2">
-            <a
-              href="#!"
-              className={this.state.closebutton}
-              onClick={() => this.disappearChart()}
-            >
-              <Icon>close</Icon>
-            </a>
+            <div className="divclose">
+              <button
+                className={this.state.closebutton}
+                onClick={() => this.disappearChart()}
+              >
+                X
+              </button>
+            </div>
 
             <Charts displayChart={chartdisplay} />
           </div>
 
-          <div key="3" />
+          <div key="3">
+            <Clients
+              displayClients={clientsdisplay}
+              buttonClick2={this.disappearClients.bind(this)}
+            />
+          </div>
         </ResponsiveGridLayout>
       </div>
     );

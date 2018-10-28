@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Navigation from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
+import Clients from "./components/Clients";
 
 class App extends Component {
   render() {
