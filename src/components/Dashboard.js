@@ -42,17 +42,9 @@ class Dashboard extends React.Component {
   render() {
     var layouts = {
       lg: [
-        { x: 0, y: 0, w: 1, h: 2 },
-        { x: 2, y: 0, w: 3, h: 5 },
-        { x: 4, y: 5, w: 3, h: 4 },
-        { x: 6, y: 9, w: 3, h: 2 },
-        { x: 8, y: 11, w: 3, h: 4 },
-        { x: 8, y: 15, w: 4, h: 4 },
-        { x: 0, y: 2, w: 1, h: 2 },
-        { x: 2, y: 5, w: 2, h: 5 },
-        { x: 4, y: 9, w: 2, h: 5 },
-        { x: 6, y: 27, w: 3, h: 5 },
-        { x: 8, y: 22, w: 1, h: 3 }
+        { x: 0, y: 0, w: 2, h: 2 },
+        { x: 0, y: 2, w: 2, h: 2 },
+        { x: 0, y: 4, w: 2, h: 2 }
       ]
     };
 
