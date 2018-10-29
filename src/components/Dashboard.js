@@ -87,15 +87,16 @@ class Dashboard extends React.Component {
           cols={{ lg: 5.2, md: 6, sm: 6, xs: 4, xxs: 2 }}
           rowHeight={345}
           autoSize={true}
+          draggableCancel="input, green"
         >
-          <div key="1">
+          <div key="1" className={this.state.display}>
             <TimeTracker
               displayState={display}
               buttonClick={this.disappear.bind(this)}
             />
           </div>
 
-          <div key="2">
+          <div key="2" className={this.state.chartdisplay}>
             <div className="divclose">
               <button
                 className={this.state.closebutton}
@@ -108,7 +109,7 @@ class Dashboard extends React.Component {
             <Charts displayChart={chartdisplay} />
           </div>
 
-          <div key="3">
+          <div key="3" className={this.state.clientsdisplay}>
             <Clients
               displayClients={clientsdisplay}
               buttonClick2={this.disappearClients.bind(this)}

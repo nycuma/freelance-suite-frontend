@@ -132,7 +132,7 @@ class TimeTracker extends React.Component {
 
           <div className="footer">
             <div className="input-field">
-              <input id="input_text" type="text" />
+              <input type="text" />
               <label for="input_text">Comments</label>
             </div>
 
