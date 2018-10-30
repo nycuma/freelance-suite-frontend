@@ -1,10 +1,23 @@
+<<<<<<< HEAD
+import React, { Component } from "react";
+import "./App.css";
+import Navigation from "./components/Navbar";
+import Dashboard from "./components/Dashboard";
+import Clients from "./components/Clients";
+=======
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import './index.css';
+>>>>>>> upstream/master
 
 class App extends Component {
   render() {
     return (
+<<<<<<< HEAD
+      <div className="App">
+        <Navigation />
+        <Dashboard />
+=======
       <div className='App'>
         <Navigation>
 
@@ -56,6 +69,7 @@ class App extends Component {
             <Arrow href='#' />
           </SubtitleWrapper>
         </Footer>
+>>>>>>> upstream/master
       </div>
     );
   }
