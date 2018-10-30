@@ -1,5 +1,32 @@
+/* GLOBAL STYLINGS */
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  color: #0b2f37;
+  font-size: 16px;
+}
+
+img {
+  font-family: serif;
+  border: 0.25px solid #ebede1;
+  padding: 2px;
+}
+
+p {
+  color: #474747;
+}
+
+a {
+  color: inherit;
+  text-decoration:none;
+}
+
+/*** 
+* Only here because of issues w/ 
+* styled-components and '\'-character */
+.rocket-para::after {
+  content: '\1F680';
+  margin-left: 10px;
 }
