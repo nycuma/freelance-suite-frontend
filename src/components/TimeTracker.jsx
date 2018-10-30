@@ -3,7 +3,7 @@ import "./TimeTracker.css";
 import { getUsers } from "../helpers/users";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
-import { Icon, Modal, Button, Navbar } from "react-materialize";
+// import { Icon, Modal, Button, Navbar } from "react-materialize";
 
 class TimeTracker extends React.Component {
   constructor(props) {

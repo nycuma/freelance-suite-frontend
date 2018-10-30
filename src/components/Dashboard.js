@@ -4,7 +4,7 @@ import "./Dashboard.css";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import TimeTracker from "./TimeTracker";
-import { Button, NavItem, Dropdown, Icon } from "react-materialize";
+import { Button, NavItem, Dropdown } from "react-materialize";
 import Charts from "./Charts";
 import Clients from "./Clients";
 

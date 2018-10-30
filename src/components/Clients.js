@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Col,
-  Card,
-  Collection,
-  CollectionItem,
-  Button,
-  Modal,
-  Icon
-} from "react-materialize";
+import { Button } from "react-materialize";
 import "./Clients.css";
 import { getUsers } from "../helpers/users";
 import axios from "axios";
@@ -32,11 +24,6 @@ class Clients extends Component {
   handleSubmit = event => {
     event.preventDefault();
     event.target.reset();
-
-    const user = {
-      name: this.state.name,
-      email: this.state.email
-    };
 
     axios
       .post(`http://localhost:8000/api/user/`, {
