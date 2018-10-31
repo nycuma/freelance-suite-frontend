@@ -40,7 +40,7 @@ class Clients extends Component {
     return (
       <div className={this.props.displayClients}>
         <div className="center">
-          <table className="closediv">
+          <table className="closed">
             <button className="closebutton" onClick={this.props.buttonClick2}>
               X
             </button>
@@ -96,11 +96,6 @@ class Clients extends Component {
               <td className="emails">
                 {this.state.users.map(email => (
                   <tr key={email.id}>{email.email}</tr>
-                ))}
-              </td>
-              <td className="dates">
-                {this.state.users.map(date => (
-                  <tr key={date.id}>{date.signupDate}</tr>
                 ))}
               </td>
             </tr>

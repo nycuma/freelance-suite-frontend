@@ -1,11 +1,11 @@
 .invisible {
   display: none;
 }
-.closediv {
-  background-color: rgb(11, 47, 55);
+.center {
   border: solid;
-  border-color: black;
-  border-bottom: none;
+}
+.closed {
+  background-color: rgb(11, 47, 55);
   display: flex;
   justify-content: flex-end;
 }
@@ -48,9 +48,6 @@ th {
   background-color: rgb(11, 47, 55);
   border-color: rgb(11, 47, 55);
   color: white;
-  border-left: solid;
-  border-right: solid;
-  border-color: black;
 }
 .borders {
   border: none;
