@@ -1,8 +1,15 @@
 import React, { Component } from "react";
+import { Router } from "@reach/router";
 import "./App.css";
+
 import Navigation from "./components/Navbar";
-//import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/Dashboard";
+import About from "./components/About";
+import SignUp from "./components/SignUp";
+import SignIn from "./components/SignIn";
 import Clients from "./components/Clients";
+import Footer from "./components/Footer";
+// import Clients from "./components/Clients";
 // import styled from "styled-components";
 
 class App extends Component {
@@ -10,7 +17,14 @@ class App extends Component {
     return (
       <div className="App">
         <Navigation />
-        <Clients />
+        <Router>
+          <Dashboard path="/" />
+          <About path="/about" />
+          <SignUp path="/signup" />
+          <SignIn path="/signin" />
+          <Clients path="clients" />
+        </Router>
+        <Footer />
       </div>
     );
   }
