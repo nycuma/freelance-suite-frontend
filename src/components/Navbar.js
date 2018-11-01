@@ -13,11 +13,14 @@ class Navigation extends React.Component {
           <NavItem right>
             <Link to="/about">About</Link>
           </NavItem>
-          <NavItem right href="">
+          <NavItem right>
             <Link to="/signup">Sign Up</Link>
           </NavItem>
-          <NavItem right href="">
+          <NavItem right>
             <Link to="/signin">Sign In</Link>
+          </NavItem>
+          <NavItem right>
+            <Link to="/clients">Clients</Link>
           </NavItem>
         </Navbar>
       </div>
