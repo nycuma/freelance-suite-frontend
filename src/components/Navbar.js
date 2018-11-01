@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, NavItem } from "react-materialize";
+import { Link } from "@reach/router";
 
 class Navigation extends React.Component {
   render() {
@@ -9,14 +10,14 @@ class Navigation extends React.Component {
           brand={<img src={require("./img/rocket-launch.svg")} alt="rocket" />}
           right
         >
-          <NavItem right href="">
-            About
+          <NavItem right>
+            <Link to="/about">About</Link>
           </NavItem>
           <NavItem right href="">
-            Sign Up
+            <Link to="/signup">Sign Up</Link>
           </NavItem>
           <NavItem right href="">
-            Sign In
+            <Link to="/signin">Sign In</Link>
           </NavItem>
         </Navbar>
       </div>
