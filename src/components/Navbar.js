@@ -10,16 +10,6 @@ class Navigation extends React.Component {
           brand={<img src={require("./img/rocket-launch.svg")} alt="rocket" />}
           right
         >
-<<<<<<< HEAD
-          <NavItem right="true" href="">
-            About
-          </NavItem>
-          <NavItem right="true" href="">
-            Sign Up
-          </NavItem>
-          <NavItem right="true" href="">
-            Sign In
-=======
           <NavItem right>
             <Link to="/about">About</Link>
           </NavItem>
@@ -28,7 +18,6 @@ class Navigation extends React.Component {
           </NavItem>
           <NavItem right href="">
             <Link to="/signin">Sign In</Link>
->>>>>>> bfd63eea156de285c2d69813c30cb1788ae407b0
           </NavItem>
         </Navbar>
       </div>
