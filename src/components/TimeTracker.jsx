@@ -29,9 +29,9 @@ class TimeTracker extends React.Component {
   };
 
   add = () => {
-    let seconds = parseInt(this.state.sec);
-    let minutes = parseInt(this.state.min);
-    let hours = parseInt(this.state.hour);
+    let seconds = parseInt(this.state.sec, 10);
+    let minutes = parseInt(this.state.min, 10);
+    let hours = parseInt(this.state.hour, 10);
     seconds++;
     if (seconds >= 60) {
       seconds = 0;
@@ -66,9 +66,9 @@ class TimeTracker extends React.Component {
   /* Clear button */
   clear = () => {
     clearInterval(this.state.fire);
-    this.setState({ sec: (this.state.sec = "00") });
-    this.setState({ min: (this.state.min = "00") });
-    this.setState({ hour: (this.state.hour = "00") });
+    this.setState({ sec: "00" });
+    this.setState({ min: "00" });
+    this.setState({ hour: "00" });
   };
 
   render() {

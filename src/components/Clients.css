@@ -1,11 +1,42 @@
 .invisible {
   display: none;
 }
-.closediv {
+.addclient {
   background-color: rgb(11, 47, 55);
+  border-color: rgb(11, 47, 55);
+  color: white;
+}
+form {
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 3fr 3fr 1fr;
+  grid-auto-rows: minmax(100px, auto);
   border: solid;
-  border-color: black;
-  border-bottom: none;
+  grid-gap: 0.2em;
+}
+.names > div:nth-child(odd) {
+  background: #ddd;
+}
+.emails > div:nth-child(odd) {
+  background: #ddd;
+}
+.del > div:nth-child(odd) {
+  background: #ddd;
+}
+.names {
+  text-align: justify;
+}
+.emails {
+  text-align: justify;
+}
+.del {
+  text-align: center;
+}
+.closed {
+  background-color: rgb(11, 47, 55);
   display: flex;
   justify-content: flex-end;
 }
@@ -16,51 +47,31 @@
   border: none;
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 15px;
-  height: 2vh;
+tr {
+  display: block;
+  float: left;
 }
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+th,
+td {
+  display: block;
 }
 
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-.tablecolors > td:nth-child(even) {
-  background-color: #dddddd;
-}
 .form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.clients {
-  background-color: rgb(11, 47, 55);
-  border-color: rgb(11, 47, 55);
-  color: white;
-  border-left: solid;
-  border-right: solid;
-  border-color: black;
+
+label {
+  font-size: 1em;
 }
-.borders {
-  border: none;
-}
-.tablecolors > tr:nth-last-child(n + 6) {
+
+.names > div:nth-last-child(n + 6) {
   display: none;
 }
-.emails > tr:nth-last-child(n + 6) {
+.emails > div:nth-last-child(n + 6) {
   display: none;
 }
-.dates > tr:nth-last-child(n + 6) {
+.del > div:nth-last-child(n + 6) {
   display: none;
 }

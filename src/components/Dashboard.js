@@ -25,7 +25,7 @@ class Dashboard extends React.Component {
     this.setState({ display: "invisible" });
   }
   appearChart = () => {
-    this.setState({ chartdisplay: "" });
+    this.setState({ chartdisplay: "display" });
     this.setState({ closebutton: "closebutton" });
   };
   disappearChart() {
@@ -77,18 +77,33 @@ class Dashboard extends React.Component {
           layouts={layouts}
           breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
           cols={{ lg: 5.2, md: 6, sm: 6, xs: 4, xxs: 2 }}
-          rowHeight={345}
-          autoSize={true}
           draggableCancel="input, green"
+          margin={[0, 0]}
         >
-          <div key="1" className={this.state.display}>
+          <div
+            key="1"
+            className={this.state.display}
+            data-grid={{
+              i: "1",
+              x: 0,
+              y: 0,
+              w: 1,
+              h: 2.3,
+              minH: 2.3,
+              maxH: 2.2
+            }}
+          >
             <TimeTracker
               displayState={display}
               buttonClick={this.disappear.bind(this)}
             />
           </div>
 
-          <div key="2" className={this.state.chartdisplay}>
+          <div
+            key="2"
+            className={this.state.chartdisplay}
+            data-grid={{ i: "2", x: 3, y: 0, w: 1, h: 2.3, minW: 1 }}
+          >
             <div className="divclose">
               <button
                 className={this.state.closebutton}
@@ -101,7 +116,11 @@ class Dashboard extends React.Component {
             <Charts displayChart={chartdisplay} />
           </div>
 
-          <div key="3" className={this.state.clientsdisplay}>
+          <div
+            key="3"
+            className={this.state.clientsdisplay}
+            data-grid={{ i: "3", x: 1, y: 0, w: 2, h: 1.7, minW: 2 }}
+          >
             <Clients
               displayClients={clientsdisplay}
               buttonClick2={this.disappearClients.bind(this)}

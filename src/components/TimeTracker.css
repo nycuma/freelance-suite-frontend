@@ -5,8 +5,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  margin-top: -10px;
-  margin-left: -10px;
+
   width: 100%;
 }
 .header,
@@ -28,8 +27,7 @@
   background-color: rgb(11, 47, 55);
   font-weight: bold;
   color: white;
-  border: solid;
-  border-color: black;
+
   border-top: none;
 }
 h3 {
@@ -39,7 +37,7 @@ h3 {
 .closediv {
   background-color: rgb(11, 47, 55);
   border: solid;
-  border-color: black;
+
   border-bottom: none;
   display: flex;
   justify-content: flex-end;

@@ -5,12 +5,11 @@
   background-color: rgb(11, 47, 55);
   display: flex;
   justify-content: flex-end;
-  margin: -9px;
+
   margin-bottom: 0;
 }
 .closebutton {
   background-color: red;
   color: white;
   font-size: 10px;
-  border: none;
 }
