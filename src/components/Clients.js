@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import { Button } from "react-materialize";
-import "./Clients.css";
-import { getUsers } from "../helpers/users";
-import axios from "axios";
-import { getCustomers } from "../helpers/customers";
+import React, { Component } from 'react';
+import { Button } from 'react-materialize';
+import './Clients.css';
+import { getUsers } from '../helpers/users';
+import axios from 'axios';
+import { getCustomers } from '../helpers/customers';
 
 class Clients extends Component {
   state = {
     users: [],
-    name: "",
-    email: "",
-    id: ""
+    name: '',
+    email: '',
+    id: '',
   };
   async componentDidMount() {
     const fetchedUsers = await getCustomers();
@@ -22,12 +22,12 @@ class Clients extends Component {
     event.preventDefault();
     let customer = {
       name: this.state.name,
-      email: this.state.email
+      email: this.state.email,
     };
 
     axios
       .post(`http://localhost:8000/api/customer/`, {
-        ...customer
+        ...customer,
       })
       .then(res => {
         console.log(res);
@@ -63,8 +63,7 @@ class Clients extends Component {
                 <td>
                   <button
                     className="closebutton"
-                    onClick={this.props.buttonClick2}
-                  >
+                    onClick={this.props.buttonClick2}>
                     X
                   </button>
                 </td>
@@ -127,8 +126,7 @@ class Clients extends Component {
                   <button
                     id={user._id}
                     className="closebutton"
-                    onClick={() => this.handleDelete(user)}
-                  >
+                    onClick={() => this.handleDelete(user)}>
                     X
                   </button>
                 </div>

@@ -1,15 +1,14 @@
-import React from "react";
-import { Navbar, NavItem } from "react-materialize";
-import { Link } from "@reach/router";
+import React from 'react';
+import { Navbar, NavItem } from 'react-materialize';
+import { Link } from '@reach/router';
 
 class Navigation extends React.Component {
   render() {
     return (
       <div>
         <Navbar
-          brand={<img src={require("./img/rocket-launch.svg")} alt="rocket" />}
-          right
-        >
+          brand={<img src={require('./img/rocket-launch.svg')} alt="rocket" />}
+          right>
           <NavItem right>
             <Link to="/about">About</Link>
           </NavItem>
