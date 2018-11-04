@@ -3,6 +3,7 @@ import "./TimeTracker.css";
 import { getUsers } from "../helpers/users";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
+import moment from "moment";
 // import { Icon, Modal, Button, Navbar } from "react-materialize";
 
 class TimeTracker extends React.Component {
@@ -15,7 +16,11 @@ class TimeTracker extends React.Component {
       hour: "00",
       fire: "",
       users: [],
-      display: this.props.displayState
+      display: this.props.displayState,
+      create: "",
+      start: "",
+      end: "",
+      duration: ""
     };
   }
 
@@ -55,12 +60,29 @@ class TimeTracker extends React.Component {
 
   /* Start button */
   start = () => {
+    this.setState({ create: moment().format("MMMM Do YYYY, h:mm:ss a") });
     this.setState({ fire: setInterval(this.add, 1000) });
   };
   /* Stop button */
 
   stop = () => {
     clearInterval(this.state.fire);
+    let seconds = parseInt(this.state.sec, 10);
+    let minutes = parseInt(this.state.min, 10);
+    let hours = parseInt(this.state.hour, 10);
+
+    var now = moment().format("MMMM Do YYYY, h:mm:ss a");
+
+    let dura = hours * 60 + minutes * 60 + seconds;
+
+    var then = moment().subtract(dura, "seconds");
+    this.setState({ start: then.format("MMMM Do YYYY, h:mm:ss a") });
+    this.setState({ end: now });
+    this.setState({ duration: dura });
+
+    //console.log(then.format("MMMM Do YYYY, h:mm:ss a"));
+    //console.log(now);
+    // console.log(dura);
   };
 
   /* Clear button */
@@ -70,9 +92,18 @@ class TimeTracker extends React.Component {
     this.setState({ min: "00" });
     this.setState({ hour: "00" });
   };
+  submit = () => {
+    const sessions = {
+      start: this.state.start,
+      end: this.state.end,
+      duration: this.state.duration
+    };
+    var { start, end, duration } = sessions;
+
+    console.log(start, end, duration);
+  };
 
   render() {
-    console.log(this.state.users);
     return (
       <div className={this.props.displayState}>
         <div className="container">
@@ -114,10 +145,8 @@ class TimeTracker extends React.Component {
 
           <div className="main2">
             <div className="align">
-              <select className="browser-default dropdown" name="Task">
-                {this.state.users.map(user => (
-                  <option key={user.id}>{user.name}</option>
-                ))}
+              <select className="browser-default dropdown" name="Project">
+                <option>Project 1</option>
               </select>
             </div>
             <div className="align2">
@@ -133,10 +162,13 @@ class TimeTracker extends React.Component {
           <div className="footer">
             <div className="input-field">
               <input type="text" />
-              <label for="input_text">Comments</label>
+              <label htmlFor="input_text">Comments</label>
             </div>
 
-            <button className="waves-effect waves-light btn-small prefix submit">
+            <button
+              className="waves-effect waves-light btn-small prefix submit"
+              onClick={() => this.submit()}
+            >
               Submit
             </button>
           </div>
