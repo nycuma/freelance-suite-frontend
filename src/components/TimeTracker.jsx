@@ -1,8 +1,10 @@
 import React from 'react';
 import './TimeTracker.css';
-import { getUsers } from '../helpers/users';
+import { getTasks } from '../helpers/tasks';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
+import moment from 'moment';
+import axios from 'axios';
 
 // import { Icon, Modal, Button, Navbar } from "react-materialize";
 
@@ -17,12 +19,12 @@ class TimeTracker extends React.Component {
       fire: '',
       users: [],
       display: this.props.displayState,
-      create: "",
-      start: "",
-      end: "",
-      duration: "",
+      create: '',
+      start: '',
+      end: '',
+      duration: '',
       tasks: [],
-      taskid: ""
+      taskid: '',
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -67,7 +69,7 @@ class TimeTracker extends React.Component {
 
   /* Start button */
   start = () => {
-    this.setState({ create: moment().format("MMMM Do YYYY, h:mm:ss a") });
+    this.setState({ create: moment().format('MMMM Do YYYY, h:mm:ss a') });
     this.setState({ fire: setInterval(this.add, 1000) });
   };
   /* Stop button */
@@ -82,7 +84,7 @@ class TimeTracker extends React.Component {
 
     let dura = hours * 60 + minutes * 60 + seconds;
 
-    var then = moment().subtract(dura, "seconds");
+    var then = moment().subtract(dura, 'seconds');
     this.setState({ start: then });
     this.setState({ end: now });
     this.setState({ duration: dura });
@@ -103,7 +105,7 @@ class TimeTracker extends React.Component {
     const sessions = {
       start: this.state.start,
       end: this.state.end,
-      duration: this.state.duration
+      duration: this.state.duration,
     };
     console.log(sessions);
     axios
@@ -165,8 +167,7 @@ class TimeTracker extends React.Component {
               <select
                 className="browser-default dropdown"
                 name="Task"
-                onChange={this.handleChange}
-              >
+                onChange={this.handleChange}>
                 {this.state.tasks.map(task => (
                   <option value={task._id} key={task._id}>
                     {task.title}
@@ -184,8 +185,7 @@ class TimeTracker extends React.Component {
 
             <button
               className="waves-effect waves-light btn-small prefix submit"
-              onClick={() => this.submit()}
-            >
+              onClick={() => this.submit()}>
               Submit
             </button>
           </div>
