@@ -1,6 +1,7 @@
 import React from "react";
 import "./TimeTracker.css";
-import { getUsers } from "../helpers/users";
+import { getTasks } from "../helpers/tasks";
+import axios from "axios";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import moment from "moment";
@@ -20,13 +21,20 @@ class TimeTracker extends React.Component {
       create: "",
       start: "",
       end: "",
-      duration: ""
+      duration: "",
+      tasks: [],
+      value: ""
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   async componentDidMount() {
-    const fetchedUsers = await getUsers();
-    this.setState({ users: fetchedUsers.data });
+    const fetchedUsers = await getTasks();
+    this.setState({ tasks: fetchedUsers.data });
+  }
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+    console.log(this.state.value);
   }
 
   disappear = () => {
@@ -71,12 +79,12 @@ class TimeTracker extends React.Component {
     let minutes = parseInt(this.state.min, 10);
     let hours = parseInt(this.state.hour, 10);
 
-    var now = moment().format("MMMM Do YYYY, h:mm:ss a");
+    var now = moment();
 
     let dura = hours * 60 + minutes * 60 + seconds;
 
     var then = moment().subtract(dura, "seconds");
-    this.setState({ start: then.format("MMMM Do YYYY, h:mm:ss a") });
+    this.setState({ start: then });
     this.setState({ end: now });
     this.setState({ duration: dura });
 
@@ -98,9 +106,17 @@ class TimeTracker extends React.Component {
       end: this.state.end,
       duration: this.state.duration
     };
-    var { start, end, duration } = sessions;
+    console.log(sessions);
+    axios
+      .post(
+        `http://localhost:8000/api/task/${this.state.value}/sessions`,
 
-    console.log(start, end, duration);
+        sessions
+      )
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      });
   };
 
   render() {
@@ -150,11 +166,15 @@ class TimeTracker extends React.Component {
               </select>
             </div>
             <div className="align2">
-              <select className="browser-default dropdown" name="Task">
-                <option>Task 1</option>
-                <option>Task 2</option>
-                <option>Task 3</option>
-                <option>Task 4</option>
+              <select
+                className="browser-default dropdown"
+                name="Task"
+                value={this.state.value}
+                onChange={this.handleChange}
+              >
+                {this.state.tasks.map(task => (
+                  <option key={task._id}>{task._id}</option>
+                ))}
               </select>
             </div>
           </div>
