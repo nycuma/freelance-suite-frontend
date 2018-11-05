@@ -27,7 +27,7 @@ a {
   * Only here because of issues w/ 
   * styled-components and '\'-character */
 .rocket-para::after {
-  content: "\1F680";
+  content: '\1F680';
   margin-left: 10px;
 }
 

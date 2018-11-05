@@ -1,10 +1,9 @@
-import React from "react";
-import "./TimeTracker.css";
-import { getTasks } from "../helpers/tasks";
-import axios from "axios";
-import "react-grid-layout/css/styles.css";
-import "react-resizable/css/styles.css";
-import moment from "moment";
+import React from 'react';
+import './TimeTracker.css';
+import { getUsers } from '../helpers/users';
+import 'react-grid-layout/css/styles.css';
+import 'react-resizable/css/styles.css';
+
 // import { Icon, Modal, Button, Navbar } from "react-materialize";
 
 class TimeTracker extends React.Component {
@@ -12,10 +11,10 @@ class TimeTracker extends React.Component {
     super(props);
     this.myRef = React.createRef();
     this.state = {
-      sec: "00",
-      min: "00",
-      hour: "00",
-      fire: "",
+      sec: '00',
+      min: '00',
+      hour: '00',
+      fire: '',
       users: [],
       display: this.props.displayState,
       create: "",
@@ -38,7 +37,7 @@ class TimeTracker extends React.Component {
   }
 
   disappear = () => {
-    this.setState({ display: "invisible" });
+    this.setState({ display: 'invisible' });
   };
 
   add = () => {
@@ -58,11 +57,11 @@ class TimeTracker extends React.Component {
         }
       }
     }
-    let s = "000000000" + seconds;
+    let s = '000000000' + seconds;
     this.setState({ sec: s.substr(s.length - 2) });
-    let m = "000000000" + minutes;
+    let m = '000000000' + minutes;
     this.setState({ min: m.substr(m.length - 2) });
-    let h = "000000000" + hours;
+    let h = '000000000' + hours;
     this.setState({ hour: h.substr(h.length - 2) });
   };
 
@@ -96,9 +95,9 @@ class TimeTracker extends React.Component {
   /* Clear button */
   clear = () => {
     clearInterval(this.state.fire);
-    this.setState({ sec: "00" });
-    this.setState({ min: "00" });
-    this.setState({ hour: "00" });
+    this.setState({ sec: '00' });
+    this.setState({ min: '00' });
+    this.setState({ hour: '00' });
   };
   submit = () => {
     const sessions = {
@@ -140,20 +139,17 @@ class TimeTracker extends React.Component {
             <div className="buttons">
               <button
                 className="waves-effect waves-light btn-small"
-                onClick={() => this.start()}
-              >
+                onClick={() => this.start()}>
                 Start
               </button>
               <button
                 className="waves-effect waves-light btn-small pause"
-                onClick={() => this.stop()}
-              >
+                onClick={() => this.stop()}>
                 ||
               </button>
               <button
                 className="waves-effect waves-light btn-small"
-                onClick={() => this.clear()}
-              >
+                onClick={() => this.clear()}>
                 Reset
               </button>
             </div>

@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
-const getUsers = () => axios.get("http://localhost:8000/api/user/");
+const getUsers = () => axios.get('http://localhost:8000/api/user/');
 
 const getOneUser = id => axios.get(`http://localhost:8000/api/user/${id}`);
 
