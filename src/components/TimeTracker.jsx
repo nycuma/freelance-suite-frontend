@@ -23,7 +23,7 @@ class TimeTracker extends React.Component {
       end: "",
       duration: "",
       tasks: [],
-      value: ""
+      taskid: ""
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -33,8 +33,8 @@ class TimeTracker extends React.Component {
     this.setState({ tasks: fetchedUsers.data });
   }
   handleChange(event) {
-    this.setState({ value: event.target.value });
-    console.log(this.state.value);
+    this.setState({ taskid: event.target.value });
+    console.log(this.state.taskid);
   }
 
   disappear = () => {
@@ -109,7 +109,7 @@ class TimeTracker extends React.Component {
     console.log(sessions);
     axios
       .post(
-        `http://localhost:8000/api/task/${this.state.value}/sessions`,
+        `http://localhost:8000/api/task/${this.state.taskid}/sessions`,
 
         sessions
       )
@@ -169,11 +169,12 @@ class TimeTracker extends React.Component {
               <select
                 className="browser-default dropdown"
                 name="Task"
-                value={this.state.value}
                 onChange={this.handleChange}
               >
                 {this.state.tasks.map(task => (
-                  <option key={task._id}>{task._id}</option>
+                  <option value={task._id} key={task._id}>
+                    {task.title}
+                  </option>
                 ))}
               </select>
             </div>
