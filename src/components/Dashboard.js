@@ -88,8 +88,10 @@ class Dashboard extends React.Component {
               w: 1,
               h: 2.3,
               minH: 2.3,
-              maxH: 2.2,
+
+              maxH: 2.3,
             }}>
+
             <TimeTracker
               displayState={display}
               buttonClick={this.disappear.bind(this)}

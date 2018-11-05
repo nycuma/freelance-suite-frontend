@@ -14,7 +14,6 @@ class Clients extends Component {
   };
   async componentDidMount() {
     const fetchedUsers = await getCustomers();
-    console.log(fetchedUsers);
     this.setState({ users: fetchedUsers.data });
   }
 

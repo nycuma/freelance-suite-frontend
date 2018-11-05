@@ -23,7 +23,12 @@ const data = [
 class Charts extends React.Component {
   render() {
     return (
-      <ResponsiveContainer className={this.props.displayChart}>
+      <ResponsiveContainer
+        className={this.props.displayChart}
+        minWidth={500}
+        width={500}
+        aspect={4.0 / 3.0}
+      >
         <AreaChart
           data={data}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
