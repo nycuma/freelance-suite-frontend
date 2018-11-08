@@ -48,7 +48,13 @@ class Dashboard extends React.Component {
       ],
     };
 
-    const { display, chartdisplay, clientsdisplay } = this.state;
+    const {
+      display,
+      chartdisplay,
+      clientsdisplay,
+      closebutton,
+      display,
+    } = this.state;
 
     return (
       <div>
@@ -78,7 +84,7 @@ class Dashboard extends React.Component {
           margin={[0, 0]}>
           <div
             key="1"
-            className={this.state.display}
+            className={display}
             data-grid={{
               i: '1',
               x: 0,
@@ -94,11 +100,11 @@ class Dashboard extends React.Component {
 
           <div
             key="2"
-            className={this.state.chartdisplay}
+            className={chartdisplay}
             data-grid={{ i: '2', x: 3, y: 0, w: 1, h: 2.3, minW: 1 }}>
             <div className="divclose">
               <button
-                className={this.state.closebutton}
+                className={closebutton}
                 onClick={() => this.disappearChart()}>
                 X
               </button>
@@ -109,7 +115,7 @@ class Dashboard extends React.Component {
 
           <div
             key="3"
-            className={this.state.clientsdisplay}
+            className={clientsdisplay}
             data-grid={{ i: '3', x: 1, y: 0, w: 2, h: 1.7, minW: 2 }}>
             <Clients
               displayClients={clientsdisplay}
