@@ -21,9 +21,9 @@ class Dashboard extends React.Component {
   appear = () => {
     this.setState({ display: '' });
   };
-  disappear() {
+  disappear = () => {
     this.setState({ display: 'invisible' });
-  }
+  };
   appearChart = () => {
     this.setState({ chartdisplay: 'display' });
     this.setState({ closebutton: 'closebutton' });
@@ -35,9 +35,9 @@ class Dashboard extends React.Component {
   appearClients() {
     this.setState({ clientsdisplay: '' });
   }
-  disappearClients() {
+  disappearClients = () => {
     this.setState({ clientsdisplay: 'invisible' });
-  }
+  };
 
   render() {
     var layouts = {
@@ -48,9 +48,7 @@ class Dashboard extends React.Component {
       ],
     };
 
-    var display = this.state.display;
-    var chartdisplay = this.state.chartdisplay;
-    var clientsdisplay = this.state.clientsdisplay;
+    const { display, chartdisplay, clientsdisplay } = this.state;
 
     return (
       <div>
@@ -91,11 +89,7 @@ class Dashboard extends React.Component {
 
               maxH: 2.3,
             }}>
-
-            <TimeTracker
-              displayState={display}
-              buttonClick={this.disappear.bind(this)}
-            />
+            <TimeTracker displayState={display} buttonClick={this.disappear} />
           </div>
 
           <div
@@ -119,7 +113,7 @@ class Dashboard extends React.Component {
             data-grid={{ i: '3', x: 1, y: 0, w: 2, h: 1.7, minW: 2 }}>
             <Clients
               displayClients={clientsdisplay}
-              buttonClick2={this.disappearClients.bind(this)}
+              buttonClick2={this.disappearClients}
             />
           </div>
         </ResponsiveGridLayout>

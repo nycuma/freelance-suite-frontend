@@ -26,17 +26,16 @@ class TimeTracker extends React.Component {
       tasks: [],
       taskid: '',
     };
-    this.handleChange = this.handleChange.bind(this);
   }
 
   async componentDidMount() {
     const fetchedUsers = await getTasks();
     this.setState({ tasks: fetchedUsers.data });
   }
-  handleChange(event) {
+  handleChange = event => {
     this.setState({ taskid: event.target.value });
     console.log(this.state.taskid);
-  }
+  };
 
   disappear = () => {
     this.setState({ display: 'invisible' });

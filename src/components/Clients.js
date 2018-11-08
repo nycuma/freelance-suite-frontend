@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-materialize';
 import './Clients.css';
-import { getUsers } from '../helpers/users';
 import axios from 'axios';
 import { getCustomers } from '../helpers/customers';
 
