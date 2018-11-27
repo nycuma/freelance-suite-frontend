@@ -21,9 +21,9 @@ class Dashboard extends React.Component {
   appear = () => {
     this.setState({ display: '' });
   };
-  disappear() {
+  disappear = () => {
     this.setState({ display: 'invisible' });
-  }
+  };
   appearChart = () => {
     this.setState({ chartdisplay: 'display' });
     this.setState({ closebutton: 'closebutton' });
@@ -35,9 +35,9 @@ class Dashboard extends React.Component {
   appearClients() {
     this.setState({ clientsdisplay: '' });
   }
-  disappearClients() {
+  disappearClients = () => {
     this.setState({ clientsdisplay: 'invisible' });
-  }
+  };
 
   render() {
     var layouts = {
@@ -48,9 +48,13 @@ class Dashboard extends React.Component {
       ],
     };
 
-    var display = this.state.display;
-    var chartdisplay = this.state.chartdisplay;
-    var clientsdisplay = this.state.clientsdisplay;
+    const {
+      display,
+      chartdisplay,
+      clientsdisplay,
+      closebutton,
+      display,
+    } = this.state;
 
     return (
       <div>
@@ -80,7 +84,7 @@ class Dashboard extends React.Component {
           margin={[0, 0]}>
           <div
             key="1"
-            className={this.state.display}
+            className={display}
             data-grid={{
               i: '1',
               x: 0,
@@ -91,20 +95,16 @@ class Dashboard extends React.Component {
 
               maxH: 2.3,
             }}>
-
-            <TimeTracker
-              displayState={display}
-              buttonClick={this.disappear.bind(this)}
-            />
+            <TimeTracker displayState={display} buttonClick={this.disappear} />
           </div>
 
           <div
             key="2"
-            className={this.state.chartdisplay}
+            className={chartdisplay}
             data-grid={{ i: '2', x: 3, y: 0, w: 1, h: 2.3, minW: 1 }}>
             <div className="divclose">
               <button
-                className={this.state.closebutton}
+                className={closebutton}
                 onClick={() => this.disappearChart()}>
                 X
               </button>
@@ -115,11 +115,11 @@ class Dashboard extends React.Component {
 
           <div
             key="3"
-            className={this.state.clientsdisplay}
+            className={clientsdisplay}
             data-grid={{ i: '3', x: 1, y: 0, w: 2, h: 1.7, minW: 2 }}>
             <Clients
               displayClients={clientsdisplay}
-              buttonClick2={this.disappearClients.bind(this)}
+              buttonClick2={this.disappearClients}
             />
           </div>
         </ResponsiveGridLayout>
