@@ -48,13 +48,7 @@ class Dashboard extends React.Component {
       ],
     };
 
-    const {
-      display,
-      chartdisplay,
-      clientsdisplay,
-      closebutton,
-      display,
-    } = this.state;
+    const { display, chartdisplay, clientsdisplay, closebutton } = this.state;
 
     return (
       <div>
