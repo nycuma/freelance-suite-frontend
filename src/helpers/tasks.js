@@ -1,5 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
-const getTasks = () => axios.get("http://localhost:8000/api/task/");
+const getTasks = () => axios.get('http://localhost:8000/api/task/');
 
-export { getTasks };
+const getTasksForProject = projectId =>
+  axios.get('http://localhost:8000/api/task', {
+    params: {
+      projectId: projectId,
+    },
+  });
+
+export { getTasks, getTasksForProject };

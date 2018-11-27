@@ -1,6 +1,7 @@
 import React from 'react';
 import './TimeTracker.css';
-import { getTasks } from '../helpers/tasks';
+import { getTasksForProject } from '../helpers/tasks';
+import { getProjects } from '../helpers/projects';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import moment from 'moment';
@@ -23,19 +24,36 @@ class TimeTracker extends React.Component {
       start: '',
       end: '',
       duration: '',
+      projects: [],
+      selectedProjectId: '',
       tasks: [],
-      taskid: '',
+      selectedTaskId: '',
     };
-    this.handleChange = this.handleChange.bind(this);
+
+    this.handleChangeTask = this.handleChangeTask.bind(this);
+    this.handleChangeProject = this.handleChangeProject.bind(this);
   }
 
   async componentDidMount() {
-    const fetchedUsers = await getTasks();
-    this.setState({ tasks: fetchedUsers.data });
+      // fetching all projects
+      const fetchedProjects = await getProjects()
+      this.setState({ projects: fetchedProjects.data })
   }
-  handleChange(event) {
-    this.setState({ taskid: event.target.value });
-    console.log(this.state.taskid);
+
+  async handleChangeProject(event) {
+    const projectId = event.target.value;
+    console.log('selected project ' + projectId);
+
+    const fetchedTasks = await getTasksForProject(projectId);
+    this.setState({ 
+      selectedProjectId: projectId,
+      tasks: fetchedTasks.data.tasks ? fetchedTasks.data.tasks : []
+    });
+  }
+
+  handleChangeTask(event) {
+    this.setState({ selectedTaskId: event.target.value });
+    console.log('selected task ' + event.target.value);
   }
 
   disappear = () => {
@@ -110,7 +128,7 @@ class TimeTracker extends React.Component {
     console.log(sessions);
     axios
       .post(
-        `http://localhost:8000/api/task/${this.state.taskid}/sessions`,
+        `http://localhost:8000/api/task/${this.state.selectedTaskId}/sessions`,
 
         sessions
       )
@@ -159,15 +177,24 @@ class TimeTracker extends React.Component {
 
           <div className="main2">
             <div className="align">
-              <select className="browser-default dropdown" name="Project">
-                <option>Project 1</option>
+              <select 
+                className="browser-default dropdown" 
+                name="Project"
+                onChange={this.handleChangeProject}>
+                <option></option>
+                {this.state.projects.map(project => (
+                  <option value={project._id} key={project._id}>
+                    {project.title}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="align2">
               <select
                 className="browser-default dropdown"
                 name="Task"
-                onChange={this.handleChange}>
+                onChange={this.handleChangeTask}>
+                <option></option>
                 {this.state.tasks.map(task => (
                   <option value={task._id} key={task._id}>
                     {task.title}
